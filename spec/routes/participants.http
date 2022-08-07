@@ -11,3 +11,5 @@ Content-Type: application/json
 GET http://localhost:8080/participants
 
 ###
+
+GET http://localhost:8080/participants/participant@example.com

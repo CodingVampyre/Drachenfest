@@ -1,17 +1,26 @@
 package com.github.codingvampyre.drachenfest.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import org.hibernate.validator.constraints.UniqueElements;
+
+import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 import java.util.Objects;
+import java.util.UUID;
 
 @Entity
 public class Participant {
 
     private @Id @GeneratedValue Long id;
 
+    @NotEmpty
+    @Column(unique = true)
     private String email;
+
+    @NotEmpty
     private String password;
+
+    @Column(unique = true)
+    private UUID uuid;
 
     public Participant(String email, String password) {
         this.email = email;
@@ -37,6 +46,14 @@ public class Participant {
         this.password = password;
     }
 
+    public UUID getUuid() {
+        return uuid;
+    }
+
+    public void setUuid(UUID uuid) {
+        this.uuid = uuid;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -58,6 +75,7 @@ public class Participant {
                 "id=" + id +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
+                ", uuid=" + uuid +
                 '}';
     }
 }
