@@ -2,7 +2,7 @@ POST  http://localhost:8080/participants
 Content-Type: application/json
 
 {
-  "email": "participant@example.com",
+  "email": "second-participant@example.com",
   "password": "Password123!"
 }
 
