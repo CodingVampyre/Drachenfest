@@ -1,6 +1,7 @@
 package com.github.codingvampyre.drachenfest.controllers;
 
 import com.github.codingvampyre.drachenfest.domain.Participant;
+import com.github.codingvampyre.drachenfest.dtos.ParticipantCreateRequestDto;
 import com.github.codingvampyre.drachenfest.repositories.ParticipantRepository;
 import com.github.codingvampyre.drachenfest.services.participant.ParticipantService;
 import com.github.codingvampyre.drachenfest.services.password.PasswordService;
@@ -32,8 +33,8 @@ public class ParticipantController {
     }
 
     @PostMapping("/participants")
-    Participant create(@RequestBody @Valid Participant participant) {
-        return this.participantService.create(participant);
+    Participant create(@RequestBody @Valid ParticipantCreateRequestDto participantCreateRequestDto) {
+        return this.participantService.create(participantCreateRequestDto);
     }
 
 }
