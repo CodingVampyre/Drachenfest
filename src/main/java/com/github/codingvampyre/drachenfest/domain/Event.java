@@ -3,29 +3,27 @@ package com.github.codingvampyre.drachenfest.domain;
 import lombok.*;
 import org.hibernate.Hibernate;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
 import javax.validation.constraints.NotNull;
-import java.util.Objects;
+import java.util.Date;
 import java.util.UUID;
 
+@Entity
 @Getter
 @Setter
 @ToString
 @RequiredArgsConstructor
 @AllArgsConstructor
-@Entity
-@Builder
-public class Participant extends BaseEntity {
-
-    @Column(unique = true)
+public class Event extends BaseEntity {
     @NotNull
-    private String email;
+    private String name;
 
-    @NotNull
-    private String password;
-
-    @Column(unique = true)
     @NotNull
     private UUID uuid;
 
+    @NotNull
+    private Date beginAt;
+
+    @NotNull
+    private Date endAt;
 }

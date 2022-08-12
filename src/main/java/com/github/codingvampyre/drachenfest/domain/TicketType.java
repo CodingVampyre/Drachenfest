@@ -3,10 +3,10 @@ package com.github.codingvampyre.drachenfest.domain;
 import lombok.*;
 import org.hibernate.Hibernate;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Positive;
 import java.util.Objects;
-import java.util.UUID;
 
 @Getter
 @Setter
@@ -15,17 +15,12 @@ import java.util.UUID;
 @AllArgsConstructor
 @Entity
 @Builder
-public class Participant extends BaseEntity {
-
-    @Column(unique = true)
-    @NotNull
-    private String email;
+public class TicketType extends BaseEntity {
 
     @NotNull
-    private String password;
+    private String name;
 
-    @Column(unique = true)
     @NotNull
-    private UUID uuid;
-
+    @Positive
+    private Float price;
 }
