@@ -1,11 +1,12 @@
 package com.github.codingvampyre.drachenfest.domain;
 
 import lombok.*;
-import org.hibernate.Hibernate;
 
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -26,4 +27,7 @@ public class Event extends BaseEntity {
 
     @NotNull
     private Date endAt;
+
+    @OneToMany(mappedBy = "event")
+    private List<TicketType> ticketTypes;
 }

@@ -1,11 +1,12 @@
 package com.github.codingvampyre.drachenfest.domain;
 
 import lombok.*;
-import org.hibernate.Hibernate;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.validation.constraints.NotNull;
-import java.util.Objects;
 import java.util.UUID;
 
 @Getter
@@ -15,7 +16,7 @@ import java.util.UUID;
 @AllArgsConstructor
 @Entity
 @Builder
-public class Participant extends BaseEntity {
+public class Account extends BaseEntity {
 
     @Column(unique = true)
     @NotNull
@@ -27,5 +28,9 @@ public class Participant extends BaseEntity {
     @Column(unique = true)
     @NotNull
     private UUID uuid;
+
+    @Enumerated(EnumType.STRING)
+    @NotNull
+    private Role role = Role.Participant;
 
 }
