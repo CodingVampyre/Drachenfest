@@ -2,12 +2,10 @@ package com.github.codingvampyre.drachenfest.domain;
 
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
+import java.util.List;
 
 @Getter
 @Setter
@@ -28,4 +26,7 @@ public class TicketType extends BaseEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "event_id")
     private Event event;
+
+    @OneToMany(mappedBy = "ticketType")
+    private List<Ticket> tickets;
 }

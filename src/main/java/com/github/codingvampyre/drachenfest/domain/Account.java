@@ -2,11 +2,9 @@ package com.github.codingvampyre.drachenfest.domain;
 
 import lombok.*;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.List;
 import java.util.UUID;
 
 @Getter
@@ -33,4 +31,9 @@ public class Account extends BaseEntity {
     @NotNull
     private Role role = Role.Participant;
 
+    @OneToMany(mappedBy = "account")
+    private List<Ticket> tickets;
+
+    @OneToMany(mappedBy = "account")
+    private List<Purchase> purchases;
 }
