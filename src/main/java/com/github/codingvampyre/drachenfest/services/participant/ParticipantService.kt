@@ -29,11 +29,12 @@ class ParticipantService(private val participantRepository: ParticipantRepositor
 		val password = participantCreateRequestDto.password
 		val passwordHash = passwordService.hash(password)
 
-		val newAcc = Account()
-		newAcc.uuid = UUID.randomUUID()
-		newAcc.email = participantCreateRequestDto.email
-		newAcc.password = passwordHash
-		newAcc.role = Role.Participant
+		val newAcc = Account(
+				uuid = UUID.randomUUID(),
+				email = participantCreateRequestDto.email,
+				password = passwordHash,
+				role = Role.Participant
+		)
 
 		// apply
 		return participantRepository.save(newAcc)
