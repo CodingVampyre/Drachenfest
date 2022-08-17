@@ -14,12 +14,12 @@ class AccountController internal constructor(private val participantService: Par
 	}
 
 	@GetMapping("/participants/{email}")
-	fun describeByUuid(@PathVariable email: String?): Account {
+	fun describeByUuid(@PathVariable email: String): Account? {
 		return participantService.findByemail(email)
 	}
 
 	@PostMapping("/participants")
-	fun create(@RequestBody participantCreateRequestDto: @Valid ParticipantCreateRequestDto?): Account {
+	fun create(@RequestBody participantCreateRequestDto: @Valid ParticipantCreateRequestDto): Account {
 		return participantService.create(participantCreateRequestDto)
 	}
 }
